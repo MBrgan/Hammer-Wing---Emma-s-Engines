@@ -1,0 +1,2 @@
+﻿Add-Migration -Context EmmaProjectContext -o Data\EmmaMigrations Initial
+Update-Database -Context EmmaContext
