@@ -90,9 +90,6 @@ namespace EmmaProject.Controllers
         {
             if (id != inventory.UPC_ID)
             {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
                 try
