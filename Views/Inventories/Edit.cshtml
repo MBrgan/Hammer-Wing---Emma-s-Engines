@@ -1,0 +1,90 @@
+﻿@model EmmaProject.Models.Inventory
+
+@{
+    ViewData["Title"] = "Edit Inventory Item";
+}
+
+<h1>Edit Inventory Item</h1>
+
+<hr />
+
+<body class="inventory_body">
+    <main>
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="hidden" asp-for="UPC_ID" />
+                    <div class="form-group form-container">
+                        <label asp-for="InvName" class="margin-top-22"></label>
+                        <input asp-for="InvName" class="no-bottom-margin" />
+                        <label asp-for="InvName" class="floating-placeholder">ex. Saw Blade</label>
+                        <span asp-validation-for="InvName" class="margin-top-22"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <label asp-for="InvSize" class="margin-top-22"></label>
+                        <input asp-for="InvSize" class="no-bottom-margin" />
+                        <label asp-for="InvSize" class="floating-placeholder">ex. 4" thick or N/A</label>
+                        <span asp-validation-for="InvSize" class="margin-top-22"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <label asp-for="InvQuantity" class="margin-top-22"></label>
+                        <input asp-for="InvQuantity" class="no-bottom-margin" />
+                        <label asp-for="InvQuantity" class="floating-placeholder">ex. 3-pack or N/A</label>
+                        <span asp-validation-for="InvQuantity" class="margin-top-22"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <label asp-for="InvAdjustedPrice" class="margin-top-22"></label>
+                        <input asp-for="InvAdjustedPrice" class="no-bottom-margin" />
+                        <label asp-for="InvAdjustedPrice" class="floating-placeholder">No dollar signs, ex. 45.22</label>
+                        <span asp-validation-for="InvAdjustedPrice" class="margin-top-22"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <label asp-for="InvMarkupPrice" class="margin-top-22"></label>
+                        <input asp-for="InvMarkupPrice" class="no-bottom-margin" />
+                        <label asp-for="InvMarkupPrice" class="floating-placeholder">No dollar signs, ex. 47.34</label>
+                        <span asp-validation-for="InvMarkupPrice" class="margin-top-22"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <label asp-for="InvCurrent" class="margin-top-22"></label>
+                        <input asp-for="InvCurrent" class="no-bottom-margin" />
+                        <label asp-for="InvCurrent" class="floating-placeholder">A Y or a N only, ex. Y</label>
+                        <span asp-validation-for="InvCurrent" class="margin-top-22"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <input type="submit" value="Save" class="btn_crud" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <a class="btn_crud" asp-action="Index">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+        @section Scripts {
+            @{
+                await Html.RenderPartialAsync("_ValidationScriptsPartial");
+            }
+        }
+    </main>
+</body>
+

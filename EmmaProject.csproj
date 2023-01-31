@@ -20,7 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Images\" />
+    <None Include="wwwroot\css\pages\home.css" />
+    <None Include="wwwroot\css\styles.css" />
+    <None Include="wwwroot\css\variables.css" />
   </ItemGroup>
 
 </Project>

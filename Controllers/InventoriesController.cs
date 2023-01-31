@@ -26,7 +26,7 @@ namespace EmmaProject.Controllers
         }
 
         // GET: Inventories/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string? id)
         {
             if (id == null || _context.Inventories == null)
             {
@@ -66,7 +66,7 @@ namespace EmmaProject.Controllers
         }
 
         // GET: Inventories/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string? id)
         {
             if (id == null || _context.Inventories == null)
             {
@@ -86,35 +86,37 @@ namespace EmmaProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UPC_ID,InvName,InvSize,InvQuantity,InvAdjustedPrice,InvMarkupPrice,InvCurrent")] Inventory inventory)
+        public async Task<IActionResult> Edit(string id, [Bind("UPC_ID,InvName,InvSize,InvQuantity,InvAdjustedPrice,InvMarkupPrice,InvCurrent")] Inventory inventory)
         {
             if (id != inventory.UPC_ID)
+                return NotFound();
             {
-            if (ModelState.IsValid)
-            {
-                try
+                if (ModelState.IsValid)
                 {
-                    _context.Update(inventory);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!InventoryExists(inventory.UPC_ID))
+                    try
                     {
-                        return NotFound();
+                        _context.Update(inventory);
+                        await _context.SaveChangesAsync();
                     }
-                    else
+                    catch (DbUpdateConcurrencyException)
                     {
-                        throw;
+                        if (!InventoryExists(inventory.UPC_ID))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
+                    return RedirectToAction(nameof(Index));
                 }
-                return RedirectToAction(nameof(Index));
             }
             return View(inventory);
         }
 
         // GET: Inventories/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string? id)
         {
             if (id == null || _context.Inventories == null)
             {
@@ -150,7 +152,7 @@ namespace EmmaProject.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool InventoryExists(int id)
+        private bool InventoryExists(string id)
         {
           return _context.Inventories.Any(e => e.UPC_ID == id);
         }

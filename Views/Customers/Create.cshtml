@@ -1,0 +1,100 @@
+﻿@model EmmaProject.Models.Customer
+
+@{
+    ViewData["Title"] = "Create Customer";
+}
+
+<h1>Create Customer</h1>
+
+<hr />
+
+<body class="inventory_body">
+    <main>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="hidden" asp-for="CustID" />
+                    <div class="form-group form-container">
+                        <label asp-for="CustFirst" class="margin-top-22"></label>
+                        <input asp-for="CustFirst" class="no-bottom-margin" />
+                        <label asp-for="CustFirst" class="floating-placeholder">ex. John</label>
+                        <span asp-validation-for="CustFirst" class="margin-top-22"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <label asp-for="CustLast" class="margin-top-22"></label>
+                        <input asp-for="CustLast" class="no-bottom-margin" />
+                        <label asp-for="CustLast" class="floating-placeholder">ex. Smith</label>
+                        <span asp-validation-for="CustLast" class="margin-top-22"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <label asp-for="CustAddress" class="margin-top-22"></label>
+                        <input asp-for="CustAddress" class="no-bottom-margin" />
+                        <label asp-for="CustAddress" class="floating-placeholder">ex. 45 Mapleway Lane</label>
+                        <span asp-validation-for="CustAddress" class="margin-top-22"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <label asp-for="CustCity" class="margin-top-22"></label>
+                        <input asp-for="CustCity" class="no-bottom-margin" />
+                        <label asp-for="CustCity" class="floating-placeholder">ex. St. Catharines</label>
+                        <span asp-validation-for="CustCity" class="margin-top-22"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <label asp-for="CustProvince" class="margin-top-22"></label>
+                        <input asp-for="CustProvince" class="no-bottom-margin" />
+                        <label asp-for="CustProvince" class="floating-placeholder">Abbreviations, ex. ON</label>
+                        <span asp-validation-for="CustProvince" class="margin-top-22"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <label asp-for="CustPostal" class="margin-top-22"></label>
+                        <input asp-for="CustPostal" class="no-bottom-margin" />
+                        <label asp-for="CustPostal" class="floating-placeholder">All capitals, ex. L2N 1G3</label>
+                        <span asp-validation-for="CustPostal" class="margin-top-22"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <label asp-for="CustPhone" class="margin-top-22"></label>
+                        <input asp-for="CustPhone" class="no-bottom-margin" />
+                        <label asp-for="CustPhone" class="floating-placeholder">No spaces or dashes, ex. 9056953326</label>
+                        <span asp-validation-for="CustPhone" class="margin-top-22"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <input type="submit" value="Save" class="btn_crud" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <a class="btn_crud" asp-action="Index">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+        @section Scripts {
+            @{
+                await Html.RenderPartialAsync("_ValidationScriptsPartial");
+            }
+        }
+    </main>
+</body>
+

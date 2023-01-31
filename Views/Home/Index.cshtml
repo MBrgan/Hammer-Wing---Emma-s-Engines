@@ -2,7 +2,48 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<body class="home_body">
+    <div class="home_menu">
+        <a asp-area="" asp-controller="Home" asp-action="Index" class="department">
+            <div>
+                <h1 class="dept_name">SALES</h1>
+                <img src="Images/sales.png" alt="Cashier handing a small white bag to the customer with a debit machine on the counter.">
+            </div>
+            <div class="department_description">
+                <h1>SALES</h1>
+                <span>Our goal is your satisfaction achieved</span>
+            </div>
+        </a>
+        <a asp-area="" asp-controller="Inventories" asp-action="Index" class="department">
+            <div>
+                <h1 class="dept_name">INVENTORY</h1>
+                <img src="Images/inventory.png" alt="Woman looking at a tablet surrounded by boxes.">
+            </div>
+            <div class="department_description">
+                <h1>INVENTORY</h1>
+                <span>The resources you need to succeed</span>
+            </div>
+        </a>
+        <a asp-area="" asp-controller="Home" asp-action="Index" class="department">
+            <div>
+                <h1 class="dept_name">ORDER</h1>
+                <img src="Images/tech.png" alt="A man fixing the side of lawn mower with a wrench.">
+            </div>
+            <div class="department_description">
+                <h1>PARTS & ORDER</h1>
+                <span>The best engine parts, guaranteed</span>
+            </div>
+        </a>
+        <a asp-area="" asp-controller="Home" asp-action="Index" class="department">
+            <div>
+                <h1 class="dept_name">REPORTS</h1>
+                <img src="Images/admin.png" alt="A tablet being held by a pair of hands with graphical information displayed, presumably in a meeting.">
+            </div>
+            <div class="department_description">
+                <h1>REPORTS</h1>
+                <span>Get all the data you need</span>
+            </div>
+        </a>
+    </div>
+    <script src="https://kit.fontawesome.com/f8c88d6b79.js" crossorigin="anonymous"></script>
+</body>

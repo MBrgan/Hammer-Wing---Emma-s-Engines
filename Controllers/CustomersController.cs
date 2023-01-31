@@ -54,7 +54,7 @@ namespace EmmaProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CustID,CustFirst,CustLast,CustPhone,CustAddress,CustCity,CustProvince,CustPostal")] Customer customer)
+        public async Task<IActionResult> Create([Bind("CustFirst,CustLast,CustPhone,CustAddress,CustCity,CustProvince,CustPostal")] Customer customer)
         {
             if (ModelState.IsValid)
             {

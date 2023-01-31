@@ -15,7 +15,7 @@ namespace EmmaProject.Data.EmmaMigrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "6.0.10");
+            modelBuilder.HasAnnotation("ProductVersion", "6.0.13");
 
             modelBuilder.Entity("EmmaProject.Models.Customer", b =>
                 {
@@ -54,7 +54,7 @@ namespace EmmaProject.Data.EmmaMigrations
 
                     b.Property<string>("CustProvince")
                         .IsRequired()
-                        .HasMaxLength(2)
+                        .HasMaxLength(3)
                         .HasColumnType("TEXT");
 
                     b.HasKey("CustID");
@@ -130,9 +130,8 @@ namespace EmmaProject.Data.EmmaMigrations
 
             modelBuilder.Entity("EmmaProject.Models.Inventory", b =>
                 {
-                    b.Property<int>("UPC_ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("UPC_ID")
+                        .HasColumnType("TEXT");
 
                     b.Property<decimal>("InvAdjustedPrice")
                         .HasColumnType("TEXT");
@@ -200,8 +199,8 @@ namespace EmmaProject.Data.EmmaMigrations
                     b.Property<int>("InvoiceID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("UPC_ID")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("UPC_ID")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("OtQuanity")
                         .HasColumnType("INTEGER");
@@ -272,8 +271,8 @@ namespace EmmaProject.Data.EmmaMigrations
                     b.Property<int>("OrderRequestID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("UPC_ID")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("UPC_ID")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("OrderRequestID", "UPC_ID");
 
@@ -335,8 +334,9 @@ namespace EmmaProject.Data.EmmaMigrations
                     b.Property<int>("SupID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("UPC_ID")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("UPC_ID")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("PriceID");
 
@@ -384,7 +384,7 @@ namespace EmmaProject.Data.EmmaMigrations
 
                     b.Property<string>("SupProvince")
                         .IsRequired()
-                        .HasMaxLength(2)
+                        .HasMaxLength(3)
                         .HasColumnType("TEXT");
 
                     b.HasKey("SupID");

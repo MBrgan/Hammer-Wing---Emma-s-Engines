@@ -3,45 +3,103 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - EmmaProject</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/EmmaProject.styles.css" asp-append-version="true" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewData["Title"] - Emma's Small Engine</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EmmaProject</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial" />
-                </div>
+    <header class="inventory_header">
+        <nav class="sidenav">
+            <div class="log_content">
+                <a asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="/images/eseLogo.png" alt="company logo">
+                </a>
+                <a asp-area="" asp-controller="Home" asp-action="Index">
+                    ESE
+                </a>
             </div>
+            <ul id="pageLinks">
+                <li class="no_pointer_fornow">
+                    <a asp-area="" asp-controller="#" asp-action="#">
+                        <i class="fa-regular fa-user lg"></i>
+                        <span class="links_name" id="greeting">Hello Emma</span>
+                    </a>
+                    <span class="menu tooltip" id="greetingTooltip">Emma</span>
+                </li>
+
+                <li>
+                    <a asp-area="" asp-controller="Inventories" asp-action="Index">
+                        <i class="fa-solid fa-warehouse"></i>
+                        Inventory
+                    </a>
+                </li>
+
+                <li>
+                    <a asp-area="" asp-controller="Suppliers" asp-action="Index">
+                        <i class="fa-regular fa-handshake"></i>
+                        <span class="links_name">Suppliers</span>
+                    </a>
+                    <span class="menu tooltip">Suppliers</span>
+                </li>
+
+                <li>
+                    <a asp-area="" asp-controller="Customers" asp-action="Index">
+                        <i class="fa-solid fa-users"></i>
+                        <span class="links_name">Customers</span>
+                    </a>
+                    <span class="menu tooltip">Customers</span>
+                </li>
+
+                <li class="no_pointer_fornow">
+                    <a asp-area="" asp-controller="#" asp-action="#">
+                        <i class="fa-regular fa-credit-card"></i>
+                        <span class="links_name">POS</span>
+                    </a>
+                    <span class="menu tooltip">POS</span>
+                </li>
+
+                <li class="no_pointer_fornow">
+                    <a asp-area="" asp-controller="#" asp-action="#">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                        <span class="links_name">Order Requests</span>
+                    </a>
+                    <span class="menu tooltip">Order Requests</span>
+                </li>
+
+                <li class="no_pointer_fornow">
+                    <a asp-area="" asp-controller="#" asp-action="#">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span class="links_name">Analytics</span>
+                    </a>
+                    <span class="menu tooltip">Analytics</span>
+                </li>
+
+                <li class="no_pointer_fornow">
+                    <a asp-area="" asp-controller="#" asp-action="#">
+                        <i class="fa-solid fa-gear"></i>
+                        <span class="links_name">Manage Roles</span>
+                    </a>
+                    <span class="menu tooltip">Manage Roles</span>
+                </li>
+            </ul>
         </nav>
+        <div class="logout">
+            <a href="#" onclick="loggingOut()" tabindex="63">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span class="links_name">Log out</span>
+            </a>
+            <span class="menu tooltip">Log out</span>
+        </div>
+
+        <p class="rights"><i class="fa-regular fa-copyright"></i>  Copyright Hammer Wing</p>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div>
+        <main>
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - EmmaProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

@@ -7,10 +7,10 @@ namespace EmmaProject.Models
     {
 
         [Display(Name = "UPC")]
-        [Required(ErrorMessage = "UPC must match the pattern '###-####-#'")]
-        [RegularExpression("^[0-9]{3}-[0-9]{4}-[0 - 9]$", ErrorMessage = "The Postal Code in the format of 'M3A 1A5'")]
-        public int UPC_ID { get; set; }
-   
+        [Required(ErrorMessage = "UPC can't be left blank")]
+        [RegularExpression("^[0-9]{3}-[0-9]{4}-[0-9]$", ErrorMessage = "The UPC Code should be in the format '###-####-#'")]
+        public string UPC_ID { get; set; }
+
 
         [Display(Name = "Name")]
         [Required(ErrorMessage = "You cannot leave Inventory Name blank.")]
@@ -23,9 +23,9 @@ namespace EmmaProject.Models
         public string InvSize { get; set; }
        
 
-        [Display(Name = "Stock")]
-        [Required(ErrorMessage = "You cannot leave Stock blank")]
-        [StringLength(20, ErrorMessage = "Stock cannot be more than 20 characters long.")]
+        [Display(Name = "Quantity")]
+        [Required(ErrorMessage = "You cannot leave Quantity blank")]
+        [StringLength(20, ErrorMessage = "Quantity cannot be more than 20 characters long.")]
         public string InvQuantity { get; set; }
 
         [Display(Name = "Price Retail")]

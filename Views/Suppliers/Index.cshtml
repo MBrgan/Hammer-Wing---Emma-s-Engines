@@ -1,0 +1,82 @@
+﻿@model IEnumerable<EmmaProject.Models.Supplier>
+
+@{
+    ViewData["Title"] = "Suppliers";
+}
+
+<body class="inventory_body">
+    <main>
+        <form asp-action="index" method="get">
+            <h1>SUPPLIERS</h1>
+            <input type="hidden" name="sortDirection" value="@ViewData["sortDirection"]" />
+            <input type="hidden" name="sortField" value="@ViewData["sortField"]" />
+            <p>
+                <a asp-action="Create" class="btn_crud">Create</a>
+            </p>
+            <div class=" divider2_desc_btn">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="bg-info">
+                            <th class="tableHeaders" tabindex="80">
+                                <input type="submit" name="actionButton" value="Name" class="btn-link" />
+                            </th>
+                            <th class="no-click">
+                                Phone
+                            </th>
+                            <th class="no-click">
+                                Email
+                            </th>
+                            <th class="no-click">
+                                Address
+                            </th>
+                            <th class="no-click">
+                                City
+                            </th>
+                            <th class="no-click">
+                                Province
+                            </th>
+                            <th class="no-click">
+                                Postal Code
+                            </th>
+   
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="table-hover">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SupName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PhoneFormatted)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SupEmail)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SupAddress)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SupCity)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SupProvince)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SupPostal)
+                                </td>
+                                <td>
+                                    <a class="btn_crud" asp-action="Edit" asp-route-id="@item.SupID">Edit</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
+    <script src="https://kit.fontawesome.com/f8c88d6b79.js" crossorigin="anonymous"></script> 
+</body>

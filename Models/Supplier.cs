@@ -33,7 +33,6 @@ namespace EmmaProject.Models
         [Display(Name = "Email")]
         [Required(ErrorMessage = "Email Address is required.")]
         [StringLength(255)]
-        [DataType(DataType.EmailAddress)]
         public string SupEmail { get; set; }
 
 
@@ -42,14 +41,14 @@ namespace EmmaProject.Models
         [StringLength(100, ErrorMessage = "Supplier Address cannot be more than 100 characters long.")]
         public string SupAddress { get; set; }
 
-        [Display(Name = "Name")]
+        [Display(Name = "City")]
         [Required(ErrorMessage = "You cannot leave the name of the city blank.")]
         [StringLength(50, ErrorMessage = "City name cannot be more than 50 characters long.")]
         public string SupCity { get; set; }
 
         [Display(Name = "Province")]
         [Required(ErrorMessage = "You cannot leave the name of the province blank.")]
-        [StringLength(2, ErrorMessage = "Province name can only be 2 characters long.")]
+        [StringLength(3, ErrorMessage = "Province name can only be a maximum of 3 characters long.")]
         public string SupProvince { get; set; }
 
         [Display(Name = "Postal Code")]

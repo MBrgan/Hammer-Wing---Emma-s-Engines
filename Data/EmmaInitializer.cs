@@ -12,6 +12,8 @@ namespace EmmaProject.Data
                 .ServiceProvider.GetRequiredService<EmmaProjectContext>();
             try
             {
+                context.Database.EnsureDeleted();
+
                 context.Database.Migrate();
 
                 //Seeding data for Employees
@@ -110,7 +112,7 @@ namespace EmmaProject.Data
                             CustPhone = "2638746671",
                             CustAddress = "3400 Center St",
                             CustCity = "Vulcan",
-                            CustProvince = "Alberta",
+                            CustProvince = "AB",
                             CustPostal = "T0L 2B0"
                         },
                         new Customer
@@ -120,7 +122,7 @@ namespace EmmaProject.Data
                             CustPhone = "4034700566",
                             CustAddress = "1217 Islington Ave",
                             CustCity = "Toronto",
-                            CustProvince = "Ontario",
+                            CustProvince = "ON",
                             CustPostal = "M8V 3B6"
                         },
                         new Customer
@@ -130,7 +132,7 @@ namespace EmmaProject.Data
                             CustPhone = "2043810624",
                             CustAddress = "1752 St Jean Baptiste St",
                             CustCity = "St Prosper De Dorchester",
-                            CustProvince = "Quebec",
+                            CustProvince = "QC",
                             CustPostal = "G0M 1Y0"
                         },
                         new Customer
@@ -140,7 +142,7 @@ namespace EmmaProject.Data
                             CustPhone = "3436471532",
                             CustAddress = "4474 Toy Avenue",
                             CustCity = "Ajax Pickering",
-                            CustProvince = "Ontario",
+                            CustProvince = "ON",
                             CustPostal = "L1W 3N9"
                         },
                         new Customer
@@ -150,7 +152,7 @@ namespace EmmaProject.Data
                             CustPhone = "5194440181",
                             CustAddress = "794 Jade St",
                             CustCity = "Richmond",
-                            CustProvince = "British Columbia",
+                            CustProvince = "BC",
                             CustPostal = "V7E 2E4"
                         },
                         new Customer
@@ -160,7 +162,7 @@ namespace EmmaProject.Data
                             CustPhone = "2899957489",
                             CustAddress = "3833 White Point Road",
                             CustCity = "Shelburne",
-                            CustProvince = "Nova Scotia",
+                            CustProvince = "NS",
                             CustPostal = "B0T 1W0"
                         },
                         new Customer
@@ -170,7 +172,7 @@ namespace EmmaProject.Data
                             CustPhone = "2893238002",
                             CustAddress = "4146 Bay Street",
                             CustCity = "Toronto",
-                            CustProvince = "Ontario",
+                            CustProvince = "ON",
                             CustPostal = "M5J 2R8"
                         },
                         new Customer
@@ -180,7 +182,7 @@ namespace EmmaProject.Data
                             CustPhone = "3438772169",
                             CustAddress = "220 A Avenue",
                             CustCity = "Edmonton",
-                            CustProvince = "Alberta",
+                            CustProvince = "AB",
                             CustPostal = "T5J 0K7"
                         },
                         new Customer
@@ -190,7 +192,7 @@ namespace EmmaProject.Data
                             CustPhone = "2496322220",
                             CustAddress = "3872 Sixth Street",
                             CustCity = "New Westminster",
-                            CustProvince = "British Columbia",
+                            CustProvince = "BC",
                             CustPostal = "V3L 3C1"
                         },
                         new Customer
@@ -200,7 +202,7 @@ namespace EmmaProject.Data
                             CustPhone = "2364725460",
                             CustAddress = "1136 Granville St",
                             CustCity = "Halifax",
-                            CustProvince = "Nova Scotia",
+                            CustProvince = "NS",
                             CustPostal = "B3K 1N7"
                         });
                     context.SaveChanges();
@@ -211,8 +213,9 @@ namespace EmmaProject.Data
                     context.Inventories.AddRange(
                         new Inventory
                         {
+                            UPC_ID = "123-4567-8",
                             InvName = "Mower Blade",
-                            InvSize = "\t(S) - 8\" Length x 4\" Width",
+                            InvSize = "(S) - 8\" Length x 4\" Width",
                             InvAdjustedPrice = 10.99M,
                             InvQuantity = "3-Pack",
                             InvMarkupPrice = 13.99M,
@@ -221,8 +224,9 @@ namespace EmmaProject.Data
                         },
                         new Inventory
                         {
+                            UPC_ID = "234-5678-9",
                             InvName = "Saw Blade",
-                            InvSize = "\t(L) - 12\' Length x 5\' Width",
+                            InvSize = "(L) - 12\' Length x 5\' Width",
                             InvAdjustedPrice = 13.00M,
                             InvQuantity = "3-Pack",
                             InvMarkupPrice = 15.99M,
@@ -230,6 +234,7 @@ namespace EmmaProject.Data
                         },
                         new Inventory
                         {
+                            UPC_ID = "345-6789-0",
                             InvName = "Atlas Lawnmower Engine Brake Cable",
                             InvSize = "54\" (137 cm) cable",
                             InvAdjustedPrice = 6.99M,
@@ -239,6 +244,7 @@ namespace EmmaProject.Data
                         },
                         new Inventory
                         {
+                            UPC_ID = "456-7890-1",
                             InvName = "Champion 224cc OHV Horizontal Gas Engine",
                             InvSize = "Shaft dimensions (D x L): 2.4 D x 3/4\" D",
                             InvAdjustedPrice = 97.99M,
@@ -248,14 +254,17 @@ namespace EmmaProject.Data
                         },
                         new Inventory
                         {
+                            UPC_ID = "567-8901-2",
                             InvName = "MTD Replacement Blade Adapter",
                             InvSize = "Fits 7/8\" crankshaft with 3/16\" key",
                             InvAdjustedPrice = 15.99M,
                             InvQuantity = "1",
                             InvMarkupPrice = 18.99M,
-                            InvCurrent = 'Y'                        },
+                            InvCurrent = 'Y'                        
+                        },
                         new Inventory
                         {
+                            UPC_ID = "678-9012-3",
                             InvName = "Mower Sulky Caster Wheels",
                             InvSize = "11\" pneumatic caster wheels",
                             InvAdjustedPrice = 91.99M,
@@ -265,6 +274,7 @@ namespace EmmaProject.Data
                         },
                         new Inventory
                         {
+                            UPC_ID = "789-0123-4",
                             InvName = "Starter Rope W/Handle",
                             InvSize = "4.5 mm Rope. 43\" Long (110cm)",
                             InvAdjustedPrice = 5.99M,
@@ -274,6 +284,7 @@ namespace EmmaProject.Data
                         },
                         new Inventory
                         {
+                            UPC_ID = "890-1234-5",
                             InvName = "Proslide XT Gas Spring",
                             InvSize = "6mm-15mm",
                             InvAdjustedPrice = 12.99M,
@@ -283,6 +294,7 @@ namespace EmmaProject.Data
                         },
                         new Inventory
                         {
+                            UPC_ID = "901-2345-6",
                             InvName = "Walker 6610 Dethatcher Tines For A10",
                             InvSize = "WIDTH: 4\" THICKNESS: 0.1600\" OVERALL LENGTH: 8\"",
                             InvAdjustedPrice = 86.99M,
@@ -292,6 +304,7 @@ namespace EmmaProject.Data
                         },
                         new Inventory
                         {
+                            UPC_ID = "012-3456-7",
                             InvName = "Battery Powered Sprayer",
                             InvSize = "4 Gallons",
                             InvAdjustedPrice = 42.99M,
@@ -312,7 +325,7 @@ namespace EmmaProject.Data
                             SupEmail = "jasonm@domain.ca",
                             SupAddress = "1251 Kinchant St",
                             SupCity = "Quesnel",
-                            SupProvince = "British Columbia",
+                            SupProvince = "BC",
                             SupPostal = "V2J 2R5"
                         },
                         new Supplier
@@ -322,7 +335,7 @@ namespace EmmaProject.Data
                             SupEmail = "cherryfox2023@domain.ca",
                             SupAddress = "2883 Duke Street",
                             SupCity = "Montreal",
-                            SupProvince = "Quebec",
+                            SupProvince = "QC",
                             SupPostal = "H3C 5K4"
                         },
                         new Supplier
@@ -332,7 +345,7 @@ namespace EmmaProject.Data
                             SupEmail = "janetedmonton@domain.ca",
                             SupAddress = "1329 137th Avenue",
                             SupCity = "Edmonton",
-                            SupProvince = "Alberta",
+                            SupProvince = "AB",
                             SupPostal = "T5J 2Z2"
                         },
                         new Supplier
@@ -342,7 +355,7 @@ namespace EmmaProject.Data
                             SupEmail = "milnem1@domain.ca",
                             SupAddress = "557 rue Saint-Antoine",
                             SupCity = "Granby",
-                            SupProvince = "Quebec",
+                            SupProvince = "QC",
                             SupPostal = "J2H 2H5"
                         },
                         new Supplier
@@ -352,7 +365,7 @@ namespace EmmaProject.Data
                             SupEmail = "cowboymotor23@domain.ca",
                             SupAddress = "4189 Haaglund Rd",
                             SupCity = "Peachland",
-                            SupProvince = "British Columbia",
+                            SupProvince = "BC",
                             SupPostal = "V0H 1X0"
                         },
                         new Supplier
@@ -362,7 +375,7 @@ namespace EmmaProject.Data
                             SupEmail = "royalsmashers@domain.ca",
                             SupAddress = "894 Poplar Street",
                             SupCity = "Alberton",
-                            SupProvince = "Prince Edward Island",
+                            SupProvince = "PEI",
                             SupPostal = "C0B 1B0"
                         },
                         new Supplier
@@ -372,7 +385,7 @@ namespace EmmaProject.Data
                             SupEmail = "bmalik123@domain.ca",
                             SupAddress = "4129 Silver Springs Blvd",
                             SupCity = "Calgary",
-                            SupProvince = "Alberta",
+                            SupProvince = "AB",
                             SupPostal = "T3E 0K6"
                         },
                         new Supplier
@@ -382,7 +395,7 @@ namespace EmmaProject.Data
                             SupEmail = "camerong11@domain.ca",
                             SupAddress = "3487 Yonge Street",
                             SupCity = "Toronto",
-                            SupProvince = "Ontario",
+                            SupProvince = "ON",
                             SupPostal = "M4W 1J7"
                         },
                         new Supplier
@@ -392,7 +405,7 @@ namespace EmmaProject.Data
                             SupEmail = "rainbowace@domain.ca",
                             SupAddress = "3791 St Marys Rd",
                             SupCity = "Winnipeg",
-                            SupProvince = "Manitoba",
+                            SupProvince = "MN",
                             SupPostal = "R3C 0C4"
                         },
                         new Supplier
@@ -402,7 +415,7 @@ namespace EmmaProject.Data
                             SupEmail = "kikkomanquebec@domain.ca",
                             SupAddress = "251 Saskatchewan Dr",
                             SupCity = "Quebec",
-                            SupProvince = "Quebec",
+                            SupProvince = "QC",
                             SupPostal = "S4P 3Y2"
                         });
                     context.SaveChanges();

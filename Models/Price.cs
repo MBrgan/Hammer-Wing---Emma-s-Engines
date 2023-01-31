@@ -7,8 +7,9 @@ namespace EmmaProject.Models
         public int PriceID { get; set; }
 
         [Display(Name = "UPC")]
-        [Required(ErrorMessage = "UPC must match the pattern '###-####-#'")]
-        public int UPC_ID { get; set; }
+        [Required(ErrorMessage = "UPC can't be left blank")]
+        [RegularExpression("^[0-9]{3}-[0-9]{4}-[0-9]$", ErrorMessage = "The UPC Code should be in the format '###-####-#'")]
+        public string UPC_ID { get; set; }
         public Inventory Inventory { get; set; }
 
         [Display(Name = "Cost")]
@@ -21,7 +22,6 @@ namespace EmmaProject.Models
         [Required(ErrorMessage = "You cannot leave Purchased Date blank.")]
         public DateOnly PricePurchasedDate { get; set; }
 
-
         [Display(Name = "Price Count")]
         [Required(ErrorMessage = "You cannot leave Price Count blank.")]
         public int PriceCount { get; set; }
@@ -29,8 +29,5 @@ namespace EmmaProject.Models
         [Display(Name = "Supplier")]
         public int SupID { get; set; }
         public Supplier Supplier { get; set; }
-        
-
-
     }
 }

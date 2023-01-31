@@ -47,7 +47,7 @@ namespace EmmaProject.Models
 
         [Display(Name = "Province")]
         [Required(ErrorMessage = "You cannot leave the name of the province blank.")]
-        [StringLength(2, ErrorMessage = "Province name can only be 2 characters long.")]
+        [StringLength(3, ErrorMessage = "Province name can only be a maximum of 3 characters long.")]
         public string CustProvince { get; set; }
 
         [Display(Name = "Postal Code")]

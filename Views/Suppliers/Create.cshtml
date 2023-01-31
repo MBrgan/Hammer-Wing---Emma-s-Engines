@@ -1,0 +1,100 @@
+﻿@model EmmaProject.Models.Supplier
+
+@{
+    ViewData["Title"] = "Create Supplier";
+}
+
+<h1>Create Supplier</h1>
+
+<hr />
+
+<body class="inventory_body">
+    <main>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="hidden" asp-for="SupID" />
+                    <div class="form-group form-container">
+                        <label asp-for="SupName" class="margin-top-22"></label>
+                        <input asp-for="SupName" class="no-bottom-margin" />
+                        <label asp-for="SupName" class="floating-placeholder">ex. John Deere</label>
+                        <span asp-validation-for="SupName" class="margin-top-22"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <label asp-for="SupPhone" class="margin-top-22"></label>
+                        <input asp-for="SupPhone" class="no-bottom-margin" />
+                        <label asp-for="SupPhone" class="floating-placeholder">No spaces or dashes, ex. 9056953326</label>
+                        <span asp-validation-for="SupPhone" class="margin-top-22"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <label asp-for="SupEmail" class="margin-top-22"></label>
+                        <input asp-for="SupEmail" class="no-bottom-margin" />
+                        <label asp-for="SupEmail" class="floating-placeholder">ex. supplier@domain.ca</label>
+                        <span asp-validation-for="SupEmail" class="margin-top-22"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <label asp-for="SupAddress" class="margin-top-22"></label>
+                        <input asp-for="SupAddress" class="no-bottom-margin" />
+                        <label asp-for="SupAddress" class="floating-placeholder">ex. 45 Mapleway Lane</label>
+                        <span asp-validation-for="SupAddress" class="margin-top-22"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <label asp-for="SupCity" class="margin-top-22"></label>
+                        <input asp-for="SupCity" class="no-bottom-margin" />
+                        <label asp-for="SupCity" class="floating-placeholder">ex. St. Catharines</label>
+                        <span asp-validation-for="SupCity" class="margin-top-22"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <label asp-for="SupProvince" class="margin-top-22"></label>
+                        <input asp-for="SupProvince" class="no-bottom-margin" />
+                        <label asp-for="SupProvince" class="floating-placeholder">Abbreviations, ex. ON</label>
+                        <span asp-validation-for="SupProvince" class="margin-top-22"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <label asp-for="SupPostal" class="margin-top-22"></label>
+                        <input asp-for="SupPostal" class="no-bottom-margin" />
+                        <label asp-for="SupPostal" class="floating-placeholder">All capitals, ex. L2N 1G3</label>
+                        <span asp-validation-for="SupPostal" class="margin-top-22"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <input type="submit" value="Save" class="btn_crud" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <a class="btn_crud" asp-action="Index">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+        @section Scripts {
+            @{
+                await Html.RenderPartialAsync("_ValidationScriptsPartial");
+            }
+        }
+    </main>
+</body>
+
