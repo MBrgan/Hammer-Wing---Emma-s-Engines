@@ -12,7 +12,8 @@ namespace EmmaProject.Data
                 .ServiceProvider.GetRequiredService<EmmaProjectContext>();
             try
             {
-                context.Database.EnsureDeleted();
+                //If the migration update has an issue, uncomment the line of code below, execute the project, close the project and comment this line back...
+                //context.Database.EnsureDeleted();
 
                 context.Database.Migrate();
 
@@ -216,8 +217,8 @@ namespace EmmaProject.Data
                             UPC_ID = "123-4567-8",
                             InvName = "Mower Blade",
                             InvSize = "(S) - 8\" Length x 4\" Width",
-                            InvAdjustedPrice = 10.99M,
                             InvQuantity = "3-Pack",
+                            InvAdjustedPrice = 10.99M,
                             InvMarkupPrice = 13.99M,
                             InvCurrent = 'Y'
 
@@ -227,8 +228,8 @@ namespace EmmaProject.Data
                             UPC_ID = "234-5678-9",
                             InvName = "Saw Blade",
                             InvSize = "(L) - 12\' Length x 5\' Width",
-                            InvAdjustedPrice = 13.00M,
                             InvQuantity = "3-Pack",
+                            InvAdjustedPrice = 13.00M,
                             InvMarkupPrice = 15.99M,
                             InvCurrent = 'Y'
                         },
@@ -237,8 +238,8 @@ namespace EmmaProject.Data
                             UPC_ID = "345-6789-0",
                             InvName = "Atlas Lawnmower Engine Brake Cable",
                             InvSize = "54\" (137 cm) cable",
-                            InvAdjustedPrice = 6.99M,
                             InvQuantity = "1",
+                            InvAdjustedPrice = 6.99M,
                             InvMarkupPrice = 8.99M,
                             InvCurrent = 'N'
                         },
@@ -247,8 +248,8 @@ namespace EmmaProject.Data
                             UPC_ID = "456-7890-1",
                             InvName = "Champion 224cc OHV Horizontal Gas Engine",
                             InvSize = "Shaft dimensions (D x L): 2.4 D x 3/4\" D",
-                            InvAdjustedPrice = 97.99M,
                             InvQuantity = "1",
+                            InvAdjustedPrice = 97.99M,
                             InvMarkupPrice = 113.99M,
                             InvCurrent = 'N'
                         },
@@ -257,18 +258,18 @@ namespace EmmaProject.Data
                             UPC_ID = "567-8901-2",
                             InvName = "MTD Replacement Blade Adapter",
                             InvSize = "Fits 7/8\" crankshaft with 3/16\" key",
-                            InvAdjustedPrice = 15.99M,
                             InvQuantity = "1",
+                            InvAdjustedPrice = 15.99M,
                             InvMarkupPrice = 18.99M,
-                            InvCurrent = 'Y'                        
+                            InvCurrent = 'Y'
                         },
                         new Inventory
                         {
                             UPC_ID = "678-9012-3",
                             InvName = "Mower Sulky Caster Wheels",
                             InvSize = "11\" pneumatic caster wheels",
-                            InvAdjustedPrice = 91.99M,
                             InvQuantity = "1",
+                            InvAdjustedPrice = 91.99M,
                             InvMarkupPrice = 122.99M,
                             InvCurrent = 'Y'
                         },
@@ -277,8 +278,8 @@ namespace EmmaProject.Data
                             UPC_ID = "789-0123-4",
                             InvName = "Starter Rope W/Handle",
                             InvSize = "4.5 mm Rope. 43\" Long (110cm)",
-                            InvAdjustedPrice = 5.99M,
                             InvQuantity = "3-Pack",
+                            InvAdjustedPrice = 5.99M,
                             InvMarkupPrice = 6.99M,
                             InvCurrent = 'N'
                         },
@@ -287,8 +288,8 @@ namespace EmmaProject.Data
                             UPC_ID = "890-1234-5",
                             InvName = "Proslide XT Gas Spring",
                             InvSize = "6mm-15mm",
-                            InvAdjustedPrice = 12.99M,
                             InvQuantity = "3-Pack",
+                            InvAdjustedPrice = 12.99M,
                             InvMarkupPrice = 15.99M,
                             InvCurrent = 'N'
                         },
@@ -297,8 +298,8 @@ namespace EmmaProject.Data
                             UPC_ID = "901-2345-6",
                             InvName = "Walker 6610 Dethatcher Tines For A10",
                             InvSize = "WIDTH: 4\" THICKNESS: 0.1600\" OVERALL LENGTH: 8\"",
-                            InvAdjustedPrice = 86.99M,
                             InvQuantity = "20",
+                            InvAdjustedPrice = 86.99M,
                             InvMarkupPrice = 100.99M,
                             InvCurrent = 'Y'
                         },
@@ -307,10 +308,85 @@ namespace EmmaProject.Data
                             UPC_ID = "012-3456-7",
                             InvName = "Battery Powered Sprayer",
                             InvSize = "4 Gallons",
-                            InvAdjustedPrice = 42.99M,
                             InvQuantity = "1",
+                            InvAdjustedPrice = 42.99M,
                             InvMarkupPrice = 49.99M,
                             InvCurrent = 'Y'
+                        });
+                    context.SaveChanges();
+                }
+                if (!context.Prices.Any())
+                {
+                    context.Prices.AddRange(
+                        new Price
+                        {
+                            UPC_ID = "123-4567-8",
+                            PricePurchasedCost = 55.55M,
+                            PricePurchasedDate = new DateOnly(2022, 10, 19),
+                            PriceCount = 50
+                        },
+                        new Price
+                        {
+                            UPC_ID = "123-4567-8",
+                            PricePurchasedCost = 45.55M,
+                            PricePurchasedDate = new DateOnly(2022, 10, 19),
+                            PriceCount = 50
+                        },
+                        new Price
+                        {
+                            UPC_ID = "123-4567-8",
+                            PricePurchasedCost = 65.55M,
+                            PricePurchasedDate = new DateOnly(2022, 10, 19),
+                            PriceCount = 50
+                        },
+                        new Price
+                        {
+                            UPC_ID = "345-4567-8",
+                            PricePurchasedCost = 75.55M,
+                            PricePurchasedDate = new DateOnly(2022, 10, 19),
+                            PriceCount = 50
+                        },
+                        new Price
+                        {
+                            UPC_ID = "123-4527-9",
+                            PricePurchasedCost = 45.55M,
+                            PricePurchasedDate = new DateOnly(2022, 10, 19),
+                            PriceCount = 50
+                        },
+                        new Price
+                        {
+                            UPC_ID = "223-4567-8",
+                            PricePurchasedCost = 85.55M,
+                            PricePurchasedDate = new DateOnly(2022, 10, 19),
+                            PriceCount = 50
+                        },
+                        new Price
+                        {
+                            UPC_ID = "333-4567-8",
+                            PricePurchasedCost = 95.55M,
+                            PricePurchasedDate = new DateOnly(2022, 10, 19),
+                            PriceCount = 50
+                        },
+                        new Price
+                        {
+                            UPC_ID = "444-4567-8",
+                            PricePurchasedCost = 25.55M,
+                            PricePurchasedDate = new DateOnly(2022, 10, 19),
+                            PriceCount = 50
+                        },
+                        new Price
+                        {
+                            UPC_ID = "123-4567-8",
+                            PricePurchasedCost = 15.55M,
+                            PricePurchasedDate = new DateOnly(2022, 10, 19),
+                            PriceCount = 50
+                        },
+                        new Price
+                        {
+                            UPC_ID = "123-4567-8",
+                            PricePurchasedCost = 5.55M,
+                            PricePurchasedDate = new DateOnly(2022, 10, 19),
+                            PriceCount = 75
                         });
                     context.SaveChanges();
                 }

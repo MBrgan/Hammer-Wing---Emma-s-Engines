@@ -54,7 +54,7 @@ namespace EmmaProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UPC_ID,InvName,InvSize,InvQuantity,InvAdjustedPrice,InvMarkupPrice,InvCurrent")] Inventory inventory)
+        public async Task<IActionResult> Create([Bind("UPC_ID,InvName,InvSize,InvQuantity,InvAdjustedPrice,InvMarkupPrice,InvCurrent, InvStock")] Inventory inventory)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace EmmaProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("UPC_ID,InvName,InvSize,InvQuantity,InvAdjustedPrice,InvMarkupPrice,InvCurrent")] Inventory inventory)
+        public async Task<IActionResult> Edit(string id, [Bind("UPC_ID,InvName,InvSize,InvQuantity,InvAdjustedPrice,InvMarkupPrice,InvCurrent, InvStock")] Inventory inventory)
         {
             if (id != inventory.UPC_ID)
                 return NotFound();

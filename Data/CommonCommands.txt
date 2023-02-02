@@ -2,4 +2,4 @@
 Update-Database -Context ApplicationDbContext
 -------------------------------------------------------------------------------
 Add-Migration -Context EmmaProjectContext -OutputDir Data\EmmaMigrations Initial
-update-database -Context EmmaProjectContext
+Update-Database -Context EmmaProjectContext

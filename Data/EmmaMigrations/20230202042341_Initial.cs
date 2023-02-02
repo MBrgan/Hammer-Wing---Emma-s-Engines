@@ -115,7 +115,7 @@ namespace EmmaProject.Data.EmmaMigrations
                     CustID = table.Column<int>(type: "INTEGER", nullable: false),
                     ORequestDesc = table.Column<string>(type: "TEXT", maxLength: 500, nullable: false),
                     OReqSendData = table.Column<DateOnly>(type: "TEXT", nullable: false),
-                    OReqReciveData = table.Column<DateOnly>(type: "TEXT", nullable: false),
+                    OReqReceiveData = table.Column<DateOnly>(type: "TEXT", nullable: false),
                     ExternalOrderNum = table.Column<string>(type: "TEXT", maxLength: 20, nullable: false)
                 },
                 constraints: table =>
@@ -135,8 +135,8 @@ namespace EmmaProject.Data.EmmaMigrations
                 {
                     LogID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    SinIn = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    SinOut = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    SignIn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    SignOut = table.Column<DateTime>(type: "TEXT", nullable: false),
                     EmpID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -263,7 +263,7 @@ namespace EmmaProject.Data.EmmaMigrations
                 {
                     InvoiceID = table.Column<int>(type: "INTEGER", nullable: false),
                     UPC_ID = table.Column<string>(type: "TEXT", nullable: false),
-                    OtQuanity = table.Column<int>(type: "INTEGER", nullable: false),
+                    OtQuantity = table.Column<int>(type: "INTEGER", nullable: false),
                     OtSalePrice = table.Column<decimal>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>

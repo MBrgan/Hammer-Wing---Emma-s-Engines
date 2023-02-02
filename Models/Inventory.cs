@@ -38,8 +38,8 @@ namespace EmmaProject.Models
 
 
         [Display(Name = "Current")]
-        [Required(ErrorMessage = "Please enter either 'Y' (yes) or 'N'' (No) to indicate if an item is current or not")]
-        [RegularExpression("^[YN]$", ErrorMessage = "Curent must be one charcter long 'Y' or 'N'")]
+        [Required(ErrorMessage = "Please enter either 'Y' (yes) or 'N' (No) to indicate if an item is current or not")]
+        [RegularExpression("^[YN]$", ErrorMessage = "Current must be one character long 'Y' or 'N'")]
         public Char InvCurrent { get; set; }
 
         [Display(Name = "Order Request")]

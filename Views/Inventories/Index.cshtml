@@ -41,7 +41,7 @@
                             <th class="tableHeaders" tabindex="130">
                                 <input type="submit" name="actionButton" value="Stock" class="btn-link" />
                             </th>
-                            <th></th>
+                            <th class ="tableHeaders" tabindex="140"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -77,11 +77,11 @@
                                                 totalStock += p.PriceCount;
                                             }
                                             avgPrice = "$" + (totalPrice / totalStock).ToString();
-                                            <button tabindex="141" value="000-0000-0" class="price" type="button">@avgPrice</button>
+                                            <button tabindex="141" class="price" type="button">@avgPrice</button>
                                         }
                                         else
                                         {
-                                            <button tabindex="141" value="000-0000-0" class="price" type="button">N/A</button>
+                                            <button tabindex="141" class="price" type="button">N/A</button>
                                         }
                                     }
                                 </td>
@@ -96,9 +96,11 @@
                                 </td>
                                 <td>
                                     @{
+                                        int fullPrice = item.Prices.Count;
+
                                         int Stock = 0;
 
-                                        if (priceCount > 0)
+                                        if (fullPrice > 0)
                                         {
                                             var prices = item.Prices.ToList();
                                             foreach (Price p in prices)
