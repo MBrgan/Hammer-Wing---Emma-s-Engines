@@ -12,7 +12,7 @@ namespace EmmaProject.Models
         public int CustID { get; set; }
         public Customer Customer { get; set; }
 
-        [Display(Name = "Order Request Desc")]
+        [Display(Name = "Order Request Description")]
         [Required(ErrorMessage = "You can not leave Order Request Desc name blank.")]
         [StringLength(500, ErrorMessage = "Order Request Description cannot be more than 500 characters long.")]
         public string ORequestDesc { get; set; }
@@ -23,15 +23,15 @@ namespace EmmaProject.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateOnly  OReqSendData { get; set; }
 
-        [Required(ErrorMessage = "You cannot leave the Order Request Recive Date blank.")]
-        [Display(Name = "Order Request Recive Date")]
+        [Required(ErrorMessage = "You cannot leave the Order Request Receive Date blank.")]
+        [Display(Name = "Order Request Receive Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateOnly OReqReciveData { get; set; }
+        public DateOnly OReqReceiveData { get; set; }
 
-        [Display(Name = "External Order Num")]
-        [Required(ErrorMessage = "You cannot leave External Order Num blank")]
-        [StringLength(20, ErrorMessage = "External Order Num cannot be more than 20 characters long.")]
+        [Display(Name = "External Order Number")]
+        [Required(ErrorMessage = "You cannot leave the external order number blank")]
+        [StringLength(20, ErrorMessage = "The external order number cannot be more than 20 characters long.")]
         public string ExternalOrderNum { get; set; }
 
         [Display(Name = "Order Request Inventory")]

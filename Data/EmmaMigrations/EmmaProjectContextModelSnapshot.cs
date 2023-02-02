@@ -71,10 +71,10 @@ namespace EmmaProject.Data.EmmaMigrations
                     b.Property<int>("EmpID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("SinIn")
+                    b.Property<DateTime>("SignIn")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("SinOut")
+                    b.Property<DateTime>("SignOut")
                         .HasColumnType("TEXT");
 
                     b.HasKey("LogID");
@@ -202,7 +202,7 @@ namespace EmmaProject.Data.EmmaMigrations
                     b.Property<string>("UPC_ID")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("OtQuanity")
+                    b.Property<int>("OtQuantity")
                         .HasColumnType("INTEGER");
 
                     b.Property<decimal>("OtSalePrice")
@@ -248,7 +248,7 @@ namespace EmmaProject.Data.EmmaMigrations
                         .HasMaxLength(20)
                         .HasColumnType("TEXT");
 
-                    b.Property<DateOnly>("OReqReciveData")
+                    b.Property<DateOnly>("OReqReceiveData")
                         .HasColumnType("TEXT");
 
                     b.Property<DateOnly>("OReqSendData")

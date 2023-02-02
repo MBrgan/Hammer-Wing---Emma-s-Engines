@@ -5,7 +5,7 @@ namespace EmmaProject.Models
     public class OrderRequestInventory
     {
         [Display(Name = "Order Request")]
-        [Required(ErrorMessage = "Order Request cant be left blank")]
+        [Required(ErrorMessage = "Order Request can't be left blank")]
         [DataType(DataType.MultilineText)]
         public int OrderRequestID { get; set; }
         public OrderRequest OrderRequest { get; set; }

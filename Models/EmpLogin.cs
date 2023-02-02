@@ -8,15 +8,15 @@ namespace EmmaProject.Models
     {
         public int LogID { get; set; }
 
-        [Display(Name = "SinIn")]
+        [Display(Name = "Sign In")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime SinIn { get; set; }
+        public DateTime SignIn { get; set; }
 
-        [Display(Name = "SinOut")]
+        [Display(Name = "Sign Out")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime SinOut { get; set; }
+        public DateTime SignOut { get; set; }
 
 
         [Display(Name = "Employee")]

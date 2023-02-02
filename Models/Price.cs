@@ -19,14 +19,15 @@ namespace EmmaProject.Models
         [Display(Name = "Purchased Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Required(ErrorMessage = "You cannot leave Purchased Date blank.")]
+        [Required(ErrorMessage = "You cannot leave the purchased date blank.")]
         public DateOnly PricePurchasedDate { get; set; }
 
         [Display(Name = "Price Count")]
-        [Required(ErrorMessage = "You cannot leave Price Count blank.")]
+        [Required(ErrorMessage = "You cannot leave the price count blank.")]
         public int PriceCount { get; set; }
 
         [Display(Name = "Supplier")]
+        [Required(ErrorMessage = "You cannot leave the supplier blank.")]
         public int SupID { get; set; }
         public Supplier Supplier { get; set; }
     }
