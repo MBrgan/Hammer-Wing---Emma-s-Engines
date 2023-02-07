@@ -17,7 +17,7 @@
                     <div class="form-group form-container">
                         <label asp-for="UPC_ID" class="margin-top-22"></label>
                         <input asp-for="UPC_ID" class="no-bottom-margin" />
-                        <label asp-for="UPC_ID" class="floating-placeholder">ex. '123-4567-8'</label>
+                        <label asp-for="UPC_ID" class="floating-placeholder">ex. Saw Blade</label>
                         <span asp-validation-for="UPC_ID" class="margin-top-22"></span>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                     <div class="form-group form-container">
                         <label asp-for="InvAdjustedPrice" class="margin-top-22"></label>
                         <input asp-for="InvAdjustedPrice" class="no-bottom-margin" />
-                        <label asp-for="InvAdjustedPrice" class="floating-placeholder">ex. 10.00 or N/A</label>
+                        <label asp-for="InvAdjustedPrice" class="floating-placeholder">ex. 3-pack or N/A</label>
                         <span asp-validation-for="InvAdjustedPrice" class="margin-top-22"></span>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                     <div class="form-group form-container">
                         <label asp-for="InvMarkupPrice" class="margin-top-22"></label>
                         <input asp-for="InvMarkupPrice" class="no-bottom-margin" />
-                        <label asp-for="InvMarkupPrice" class="floating-placeholder">ex. 10.00 or N/A</label>
+                        <label asp-for="InvMarkupPrice" class="floating-placeholder">ex. 3-pack or N/A</label>
                         <span asp-validation-for="InvMarkupPrice" class="margin-top-22"></span>
                     </div>
                 </div>
@@ -72,15 +72,7 @@
                     <div class="form-group form-container">
                         <label asp-for="InvCurrent" class="margin-top-22"></label>
                         <input asp-for="InvCurrent" class="no-bottom-margin" />
-                        <label asp-for="InvCurrent" class="floating-placeholder">Y or N</label>
-                        <span asp-validation-for="InvCurrent" class="margin-top-22"></span>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group form-container">
-                        <label asp-for="InvCurrent" class="margin-top-22"></label>
-                        <input asp-for="InvCurrent" class="no-bottom-margin" />
-                        <label asp-for="InvCurrent" class="floating-placeholder">Y or N</label>
+                        <label asp-for="InvCurrent" class="floating-placeholder">ex. 3-pack or N/A</label>
                         <span asp-validation-for="InvCurrent" class="margin-top-22"></span>
                     </div>
                 </div>
@@ -88,10 +80,8 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group form-container">
-                        <input type="submit" value="Add" class="btn_crud" />
+                        <input type="submit" value="Save" class="btn_crud" />
                     </div>
-                </div>
-                <div class="col-md-4">
                     <div class="form-group form-container">
                         <a class="btn_crud" asp-action="Index">Back to List</a>
                     </div>

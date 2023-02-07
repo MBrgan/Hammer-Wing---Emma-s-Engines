@@ -20,6 +20,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Areas\Identity\Pages\_ViewStart.cshtml" />
+    <None Include="Views\Customers\Create.cshtml" />
+    <None Include="Views\Customers\Edit.cshtml" />
+    <None Include="Views\Customers\Index.cshtml" />
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\Privacy.cshtml" />
+    <None Include="Views\Inventories\Create.cshtml" />
+    <None Include="Views\Inventories\Edit.cshtml" />
+    <None Include="Views\Inventories\Index.cshtml" />
+    <None Include="Views\Shared\Error.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_LoginPartial.cshtml" />
+    <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Views\Suppliers\Create.cshtml" />
+    <None Include="Views\Suppliers\Edit.cshtml" />
+    <None Include="Views\Suppliers\Index.cshtml" />
+    <None Include="Views\_ViewImports.cshtml" />
+    <None Include="Views\_ViewStart.cshtml" />
     <None Include="wwwroot\css\pages\home.css" />
     <None Include="wwwroot\css\styles.css" />
     <None Include="wwwroot\css\variables.css" />

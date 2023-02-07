@@ -19,7 +19,7 @@ namespace EmmaProject.Models
          public decimal Appreciation { get; set; }
 
         [Display(Name = "Description")]
-        [StringLength(50, ErrorMessage = "The description cannot be more than 50 characters long.")]
+        [StringLength(50, ErrorMessage = "Description name cannot be more than 50 characters long.")]
         public string Description { get; set; }
 
 
@@ -27,12 +27,12 @@ namespace EmmaProject.Models
         [Required(ErrorMessage = "You cannot leave Invoice Subtotal blank.")]
         public decimal InvoiceSubtotal { get; set; }
    
-        [Display(Name = "Customer ID")]
+        [Display(Name = "Customer")]
         [Required(ErrorMessage = "You cannot leave Customer ID blank.")]
          public int CustID { get; set; }
          public Customer Customer { get; set; }
 
-        [Display(Name = "Employee ID")]
+        [Display(Name = "Employee")]
         [Required(ErrorMessage = "You cannot leave Employee ID blank.")]
         public int EmpID { get; set; }
         public Employee Employee { get; set; }

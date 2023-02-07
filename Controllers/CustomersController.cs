@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmmaProject.Data;
 using EmmaProject.Models;
+using MVC_Music.Utilities;
+using System.Diagnostics;
+using System.Diagnostics.Metrics;
 
 namespace EmmaProject.Controllers
 {
@@ -20,9 +23,64 @@ namespace EmmaProject.Controllers
         }
 
         // GET: Customers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string FirstSearch, string LastSearch, int? page, int? pageSizeID, string actionButton, string sortDirection = "asc", string sortField = "PricePurchasedCost")
         {
-              return View(await _context.Customers.ToListAsync());
+            string[] sortOptions = new[] { "First Name", "Last Name" };
+
+            var customers = _context.Customers
+                .AsNoTracking();
+
+            if (!String.IsNullOrEmpty(FirstSearch))
+            {
+                customers = customers.Where(m => m.CustFirst.ToUpper().Contains(FirstSearch.ToUpper()));
+            }
+            if (!String.IsNullOrEmpty(LastSearch))
+            {
+                customers = customers.Where(m => m.CustLast.ToUpper().Contains(LastSearch.ToUpper()));
+            }
+
+            if (!String.IsNullOrEmpty(actionButton))
+            {
+                page = 1; //reset page to start
+                if (sortOptions.Contains(actionButton))
+                {
+                    if (actionButton == sortField)
+                    {
+                        sortDirection = sortDirection == "asc" ? "desc" : "asc";
+                    }
+                    sortField = actionButton;
+                }
+            }
+            if (sortField == "First Name")
+            {
+                if (sortDirection == "asc")
+                {
+                    customers = customers.OrderBy(m => m.CustFirst);
+                }
+                else if (sortDirection == "desc")
+                {
+                    customers = customers.OrderByDescending(m => m.CustFirst);
+                }
+            }
+            else if (sortField == "Last Name")
+            {
+                if (sortDirection == "asc")
+                {
+                    customers = customers.OrderBy(m => m.CustLast);
+                }
+                else if (sortDirection == "desc")
+                {
+                    customers = customers.OrderByDescending(m => m.CustLast);
+                }
+            }
+            ViewData["sortField"] = sortField;
+            ViewData["sortDirection"] = sortDirection;
+
+            int pageSize = PageSizeHelper.SetPageSize(HttpContext, pageSizeID, "Inventories");
+            ViewData["pageSizeID"] = PageSizeHelper.PageSizeList(pageSize);
+            var pagedData = await PaginatedList<Customer>.CreateAsync(customers.AsNoTracking(), page ?? 1, pageSize);
+
+            return View(pagedData);
         }
 
         // GET: Customers/Details/5

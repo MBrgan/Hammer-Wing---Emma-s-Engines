@@ -9,8 +9,8 @@ namespace EmmaProject.Models
 
 
         [Display(Name = "Supplier")]
-        [Required(ErrorMessage = "You cannot leave the supplier blank.")]
-        [StringLength(80, ErrorMessage = "The supplier cannot be more than 80 characters long.")]
+        [Required(ErrorMessage = "You cannot leave the Supplier blank.")]
+        [StringLength(80, ErrorMessage = "Supplier cannot be more than 80 characters long.")]
         public string SupName { get; set; }
 
 
@@ -43,7 +43,7 @@ namespace EmmaProject.Models
 
         [Display(Name = "City")]
         [Required(ErrorMessage = "You cannot leave the name of the city blank.")]
-        [StringLength(50, ErrorMessage = "The city name cannot be more than 50 characters long.")]
+        [StringLength(50, ErrorMessage = "City name cannot be more than 50 characters long.")]
         public string SupCity { get; set; }
 
         [Display(Name = "Province")]
@@ -53,7 +53,7 @@ namespace EmmaProject.Models
 
         [Display(Name = "Postal Code")]
         [Required(ErrorMessage = "You cannot leave the Postal Code blank.")]
-        [RegularExpression("^[ABCEGHJ-NPRSTVXY]{1}[0-9]{1}[ABCEGHJ-NPRSTV-Z]{1}[ ]?[0-9]{1}[ABCEGHJ-NPRSTV-Z]{1}[0-9]{1}$", ErrorMessage = "The Postal Code should be in the format of 'M3A 1A5'")]
+        [RegularExpression("^[ABCEGHJ-NPRSTVXY]{1}[0-9]{1}[ABCEGHJ-NPRSTV-Z]{1}[ ]?[0-9]{1}[ABCEGHJ-NPRSTV-Z]{1}[0-9]{1}$", ErrorMessage = "The Postal Code in the format of 'M3A 1A5'")]
         public string SupPostal { get; set; }
 
         [Display(Name = "Price")]

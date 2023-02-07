@@ -62,7 +62,7 @@
                     <div class="form-group form-container">
                         <label asp-for="InvCurrent" class="margin-top-22"></label>
                         <input asp-for="InvCurrent" class="no-bottom-margin" />
-                        <label asp-for="InvCurrent" class="floating-placeholder">Y or a N only</label>
+                        <label asp-for="InvCurrent" class="floating-placeholder">A Y or a N only, ex. Y</label>
                         <span asp-validation-for="InvCurrent" class="margin-top-22"></span>
                     </div>
                 </div>
@@ -72,8 +72,6 @@
                     <div class="form-group form-container">
                         <input type="submit" value="Save" class="btn_crud" />
                     </div>
-                </div>
-                <div class="col-md-4">
                     <div class="form-group form-container">
                         <a class="btn_crud" asp-action="Index">Back to List</a>
                     </div>

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<EmmaProject.Models.Price>
+
+@{
+    ViewData["Title"] = "Price";
+}
+
+<body class="inventory_body">
+    <main>
+        <form asp-action="index" method="get">
+            <h1>Prices</h1>
+            <input type="hidden" name="sortDirection" value="@ViewData["sortDirection"]" />
+            <input type="hidden" name="sortField" value="@ViewData["sortField"]" />
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="form-group form-container">
+                        <label class="control-label">Filter by Supplier</label>
+                        @Html.DropDownList("SupplierID", null, "Any Supplier", htmlAttributes: new {@class = "form-control"})
+                    </div>
+                </div>
+                <div class="form-group col-md-4 align-self-end">
+                    <input type="submit" name="actionButton" value="filter" class="btn_crud" />
+                    <a asp-action="Index" class="btn btn-outline-dark">Clear</a>
+                </div>
+            </div>
+
+            <div class=" divider2_desc_btn">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="bg-info">
+                            <th class="tableHeaders">
+                                <input type="submit" name="actionButton" value="Supplier" class="btn-link" />
+                            </th>
+                            <th class="tableHeaders">
+                                <input type="submit" name="actionButton" value="Purchase Date" class="btn-link" />
+                            </th>
+                            <th class="tableHeaders">
+                                <input type="submit" name="actionButton" value="Purchase Cost" class="btn-link" />
+                            </th>
+                            <th class="tableHeaders">
+                                <input type="submit" name="actionButton" value="Stock" class="btn-link" />
+                            </th>
+                            <th></th> 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="table-hover">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Supplier.SupName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PricePurchasedDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PricePurchasedCost)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PriceCount)
+                                </td>
+                                <td>
+                                    <a class="btn_crud" asp-action="Edit" asp-route-id="@item.PriceID">Edit</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <partial name="_PagingNavBar" />
+        </form>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
+    <script src="https://kit.fontawesome.com/f8c88d6b79.js" crossorigin="anonymous"></script> 
+</body>

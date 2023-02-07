@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmmaProject.Data;
 using EmmaProject.Models;
+using MVC_Music.Utilities;
 
 namespace EmmaProject.Controllers
 {
@@ -20,9 +21,53 @@ namespace EmmaProject.Controllers
         }
 
         // GET: Suppliers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string NameSearch, string PhoneSearch, int? page, int? pageSizeID, string actionButton, string sortDirection = "asc", string sortField = "PricePurchasedCost")
         {
-              return View(await _context.Suppliers.ToListAsync());
+            string[] sortOptions = new[] { "Name" };
+
+            var suppliers = _context.Suppliers
+                .AsNoTracking();
+
+            if (!String.IsNullOrEmpty(NameSearch))
+            {
+                suppliers = suppliers.Where(m => m.SupName.ToUpper().Contains(NameSearch.ToUpper()));
+            }
+            if (!String.IsNullOrEmpty(PhoneSearch))
+            {
+                suppliers = suppliers.Where(m => m.SupPhone.Contains(PhoneSearch));
+            }
+
+            if (!String.IsNullOrEmpty(actionButton))
+            {
+                page = 1; //reset page to start
+                if (sortOptions.Contains(actionButton))
+                {
+                    if (actionButton == sortField)
+                    {
+                        sortDirection = sortDirection == "asc" ? "desc" : "asc";
+                    }
+                    sortField = actionButton;
+                }
+            }
+            if (sortField == "Name")
+            {
+                if (sortDirection == "asc")
+                {
+                    suppliers = suppliers.OrderBy(m => m.SupName);
+                }
+                else if (sortDirection == "desc")
+                {
+                    suppliers = suppliers.OrderByDescending(m => m.SupName);
+                }
+            }
+            ViewData["sortField"] = sortField;
+            ViewData["sortDirection"] = sortDirection;
+
+            int pageSize = PageSizeHelper.SetPageSize(HttpContext, pageSizeID, "Inventories");
+            ViewData["pageSizeID"] = PageSizeHelper.PageSizeList(pageSize);
+            var pagedData = await PaginatedList<Supplier>.CreateAsync(suppliers.AsNoTracking(), page ?? 1, pageSize);
+
+            return View(pagedData);
         }
 
         // GET: Suppliers/Details/5

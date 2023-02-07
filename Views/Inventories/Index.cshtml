@@ -7,118 +7,133 @@
 <body class="inventory_body">
     <main>
         <form asp-action="index" method="get">
-            <h1>INVENTORY</h1>
-            <input type="hidden" name="sortDirection" value="@ViewData["sortDirection"]" />
-            <input type="hidden" name="sortField" value="@ViewData["sortField"]" />
-            <p>
-                <a asp-action="Create" class="btn_crud">Create</a>
-            </p>
-            <div class=" divider2_desc_btn">
-                <table class="table table-striped">
-                    <thead>
-                        <tr class="bg-info">
-                            <th class="tableHeaders" tabindex="80">
-                                <input type="submit" name="actionButton" value="UPC" class="btn-link" />
-                            </th>
-                            <th class="tableHeaders" tabindex="90">
-                                <input type="submit" name="actionButton" value="Name" class="btn-link" />
-                            </th>
-                            <th class="no-click">
-                                Size
-                            </th>
-                            <th class="no-click">
-                                Quantity
-                            </th>
-                            <th class="tableHeaders" tabindex="100">
-                                <input type="submit" name="actionButton" value="Cost (AVG)" class="btn-link" />
-                            </th>
-                            <th class="tableHeaders" tabindex="110">
-                                <input type="submit" name="actionButton" value="Price (Retail)" class="btn-link" />
-                            </th>
-                            <th class="tableHeaders" tabindex="120">
-                                <input type="submit" name="actionButton" value="Current" class="btn-link" />
-                            </th>
-                            <th class="tableHeaders" tabindex="130">
-                                <input type="submit" name="actionButton" value="Stock" class="btn-link" />
-                            </th>
-                            <th class ="tableHeaders" tabindex="140"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr class="table-hover">
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.UPC_ID)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.InvName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.InvSize)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.InvQuantity)
-                                </td>
-                                <td>
-                                    @{
-                                        int priceCount = item.Prices.Count;
+        <h1>INVENTORY</h1>
+        <input type="hidden" name="sortDirection" value="@ViewData["sortDirection"]" />
+        <input type="hidden" name="sortField" value="@ViewData["sortField"]" />
 
-                                        if (priceCount > 0)
-                                        {
-                                            decimal totalPrice = 0;
-                                            int totalStock = 0;
-                                            string avgPrice;
-                                            var prices = item.Prices.ToList();
-
-                                            foreach(Price p in prices)
-                                            {
-                                                totalPrice += p.PricePurchasedCost * p.PriceCount;
-                                                totalStock += p.PriceCount;
-                                            }
-                                            avgPrice = "$" + (totalPrice / totalStock).ToString();
-                                            <button tabindex="141" class="price" type="button">@avgPrice</button>
-                                        }
-                                        else
-                                        {
-                                            <button tabindex="141" class="price" type="button">N/A</button>
-                                        }
-                                    }
-                                </td>
-                                <td>
-                                    @{
-                                        string priceFormatted = "$" + item.InvAdjustedPrice.ToString();
-                                        @priceFormatted
-                                    }
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.InvCurrent)
-                                </td>
-                                <td>
-                                    @{
-                                        int fullPrice = item.Prices.Count;
-
-                                        int Stock = 0;
-
-                                        if (fullPrice > 0)
-                                        {
-                                            var prices = item.Prices.ToList();
-                                            foreach (Price p in prices)
-                                            {
-                                                Stock += p.PriceCount;
-                                            }
-                                        }
-                                        @Stock
-                                    }
-                                </td>
-                                <td>
-                                    <a class="btn_crud" asp-action="Edit" asp-route-id="@item.UPC_ID">Edit</a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+        <div>
+            <div class="row" style="width : 50%;">
+                <div class="form-group form-container">
+                    <label class="control-label">Filter by UPC</label>
+                    @Html.TextBox("UPCSearch", null, new {@class = "form-control"})
+                </div>
+                <div class="form-group form-container">
+                    <label class="control-label">Filter by Name</label>
+                    @Html.TextBox("NameSearch", null, new {@class = "form-control"})
+                </div>
             </div>
+            <div class="form-group form-container">
+                    <input type="submit" name="actionButton" value="Filter" class="btn_crud" style="padding:12px;" />
+                <a asp-action="Index" class="btn_crud">Clear</a>
+            </div>
+        </div>
+
+        <div class=" divider2_desc_btn">
+            <table class="table table-striped">
+                <thead>
+                    <tr class="bg-info">
+                        <th class="tableHeaders" tabindex="80">
+                            <input type="submit" name="actionButton" value="UPC" class="btn-link" />
+                        </th>
+                        <th class="tableHeaders" tabindex="90">
+                            <input type="submit" name="actionButton" value="Name" class="btn-link" />
+                        </th>
+                        <th class="no-click">
+                            Size
+                        </th>
+                        <th class="no-click">
+                            Quantity
+                        </th>
+                        <th class="no-click">
+                            Cost (AVG)
+                        </th>
+                        <th class="tableHeaders" tabindex="110">
+                            <input type="submit" name="actionButton" value="Price (Retail)" class="btn-link" />
+                        </th>
+                        <th class="no-click">
+                            Current
+                        </th>
+                        <th class="no-click">
+                            Stock
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="table-hover">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UPC_ID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.InvName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.InvSize)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.InvQuantity)
+                            </td>
+                            <td>
+                                @{
+                                    int priceCount = item.Prices.Count;
+
+                                    if (priceCount > 0)
+                                    {
+                                        decimal totalPrice = 0;
+                                        int totalStock = 0;
+                                        string avgPrice;
+                                        var prices = item.Prices.ToList();
+
+                                        foreach(Price p in prices)
+                                        {
+                                            totalPrice += p.PricePurchasedCost * p.PriceCount;
+                                            totalStock += p.PriceCount;
+                                        }
+                                        avgPrice = "$" + (Math.Round(totalPrice / totalStock, 2)).ToString();
+
+                                        <a asp-controller="prices" asp-action="Index" class="price" asp-route-id="@item.UPC_ID">@avgPrice</a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-controller="prices" asp-action="Index" class="price" asp-route-id="@item.UPC_ID">N/A</a>
+                                    }
+                                }
+                            </td>
+                            <td>
+                                @{
+                                    string priceFormatted = "$" + item.InvAdjustedPrice.ToString();
+                                    @priceFormatted
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.InvCurrent)
+                            </td>
+                            <td>
+                                @{
+                                    int Stock = 0;
+
+                                    if (priceCount > 0)
+                                    {
+                                        var prices = item.Prices.ToList();
+                                        foreach (Price p in prices)
+                                        {
+                                            Stock += p.PriceCount;
+                                        }
+                                    }
+                                    @Stock
+                                }
+                            </td>
+                            <td>
+                                <a class="btn_crud" asp-action="Edit" asp-route-id="@item.UPC_ID">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            </div>
+            <partial name="_PagingNavBar" />
         </form>
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>

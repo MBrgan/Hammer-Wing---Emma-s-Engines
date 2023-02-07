@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmmaProject.Data;
 using EmmaProject.Models;
+using System.Diagnostics.Metrics;
+using MVC_Music.Utilities;
 
 namespace EmmaProject.Controllers
 {
@@ -20,9 +22,76 @@ namespace EmmaProject.Controllers
         }
 
         // GET: Inventories
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string UPCSearch, string NameSearch, int? page, int? pageSizeID, string actionButton, string sortDirection = "asc", string sortField = "PricePurchasedCost")
         {
-              return View(await _context.Inventories.ToListAsync());
+            string[] sortOptions = new[] { "UPC", "Name", "Price (Retail)"};
+
+            var inventories = _context.Inventories
+                .Include(m => m.Prices).ThenInclude(p => p.Supplier)
+                .AsNoTracking();
+
+            if (!String.IsNullOrEmpty(UPCSearch))
+            {
+                inventories = inventories.Where(m => m.UPC_ID.ToUpper().Contains(UPCSearch.ToUpper()));
+            }
+            if (!String.IsNullOrEmpty(NameSearch))
+            {
+                inventories = inventories.Where(m => m.InvName.ToUpper().Contains(NameSearch.ToUpper()));
+            }
+
+            if (!String.IsNullOrEmpty(actionButton))
+            {
+                page = 1; //reset page to start
+                if (sortOptions.Contains(actionButton))
+                {
+                    if (actionButton == sortField)
+                    {
+                        sortDirection = sortDirection == "asc" ? "desc" : "asc";
+                    }
+                    sortField = actionButton;
+                }
+            }
+            if (sortField == "UPC")
+            {
+                if (sortDirection == "asc")
+                {
+                    inventories = inventories.OrderBy(m => m.UPC_ID);
+                }
+                else if (sortDirection == "desc")
+                {
+                    inventories = inventories.OrderByDescending(m => m.UPC_ID);
+                }
+            }
+            else if (sortField == "Name")
+            {
+                if (sortDirection == "asc")
+                {
+                    inventories = inventories.OrderBy(m => m.InvName);
+                }
+                else if (sortDirection == "desc")
+                {
+                    inventories = inventories.OrderByDescending(m => m.InvName);
+                }
+            }
+            else if (sortField == "Price (Retail)")
+            {
+                if (sortDirection == "asc")
+                {
+                    inventories = inventories.OrderBy(m => (double)m.InvAdjustedPrice);
+                }
+                else if (sortDirection == "desc")
+                {
+                    inventories = inventories.OrderByDescending(m => (double)m.InvAdjustedPrice);
+                }
+            }
+            ViewData["sortField"] = sortField;
+            ViewData["sortDirection"] = sortDirection;
+
+            int pageSize = PageSizeHelper.SetPageSize(HttpContext, pageSizeID, "Inventories");
+            ViewData["pageSizeID"] = PageSizeHelper.PageSizeList(pageSize);
+            var pagedData = await PaginatedList<Inventory>.CreateAsync(inventories.AsNoTracking(), page ?? 1, pageSize);
+
+            return View(pagedData);
         }
 
         // GET: Inventories/Details/5
@@ -54,7 +123,7 @@ namespace EmmaProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UPC_ID,InvName,InvSize,InvQuantity,InvAdjustedPrice,InvMarkupPrice,InvCurrent, InvStock")] Inventory inventory)
+        public async Task<IActionResult> Create([Bind("UPC_ID,InvName,InvSize,InvQuantity,InvAdjustedPrice,InvMarkupPrice,InvCurrent")] Inventory inventory)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +155,7 @@ namespace EmmaProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("UPC_ID,InvName,InvSize,InvQuantity,InvAdjustedPrice,InvMarkupPrice,InvCurrent, InvStock")] Inventory inventory)
+        public async Task<IActionResult> Edit(string id, [Bind("UPC_ID,InvName,InvSize,InvQuantity,InvAdjustedPrice,InvMarkupPrice,InvCurrent")] Inventory inventory)
         {
             if (id != inventory.UPC_ID)
                 return NotFound();

@@ -8,7 +8,7 @@ namespace EmmaProject.Models
 
 
     [Display(Name = "Payment Type")]
-    [Required(ErrorMessage = "You cannot leave the payment type blank.")]
+    [Required(ErrorMessage = "You cannot leave PaymentType blank.")]
     [StringLength(20, ErrorMessage = "Customer Address cannot be more than 20 characters long.")]
     public string PaymentType { get; set; }
  

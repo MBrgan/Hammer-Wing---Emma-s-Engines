@@ -16,12 +16,12 @@ namespace EmmaProject.Models
         public Inventory Inventory { get; set; }
 
 
-        [Display(Name = "Quantity")]
-        [Required(ErrorMessage = "Quantity is requied")]
-        public int OtQuantity { get; set; }
+        [Display(Name = "Quanity")]
+        [Required(ErrorMessage = "Quanity Requied")]
+        public int OtQuanity { get; set; }
 
         [Display(Name = "Sale Price")]
-        [Required(ErrorMessage = "Sale Price is requied")]
+        [Required(ErrorMessage = "Sale Price Requied")]
         public decimal OtSalePrice { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace EmmaProject.Models
         public int InvoiceID { get; set; }
         public Invoice Invoice { get; set; }
 
-        [Display(Name = "Payment")]
+        [Display(Name = "Invoice")]
         [Required(ErrorMessage = "You cannot leave Payment blank")]
         public int PaymentID { get; set; }
         public Payment Payment { get; set; }

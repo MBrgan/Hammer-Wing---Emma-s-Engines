@@ -1,0 +1,69 @@
+﻿@model EmmaProject.Models.Price
+
+@{
+    ViewData["Title"] = "Create Price";
+}
+
+<h1>Create Price</h1>
+
+<hr />
+
+<body class="inventory_body">
+    <main>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="hidden" asp-for="UPC_ID" />
+                    <br />
+                    <div class="form-group form-container">
+                        <label asp-for="SupID" class="control-label"></label>
+                        <select asp-for="SupID" class="no-bottom-margin" asp-items="ViewBag.SupID"></select>
+                        <span asp-validation-for="SupID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <label asp-for="PricePurchasedDate" class="margin-top-22"></label>
+                        <input type="date" asp-for="PricePurchasedDate" class="no-bottom-margin" />
+                        <span asp-validation-for="PricePurchasedDate" class="margin-top-22"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <label asp-for="PricePurchasedCost" class="margin-top-22"></label>
+                        <input type="number" asp-for="PricePurchasedCost" class="no-bottom-margin" />
+                        <label asp-for="PricePurchasedCost" class="floating-placeholder">No Dollar sign, ex. 34.55</label>
+                        <span asp-validation-for="PricePurchasedCost" class="margin-top-22"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <label asp-for="PriceCount" class="margin-top-22"></label>
+                        <input type="number" asp-for="PriceCount" class="no-bottom-margin" />
+                        <label asp-for="PriceCount" class="floating-placeholder">ex. 45</label>
+                        <span asp-validation-for="PriceCount" class="margin-top-22"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group form-container">
+                        <input type="submit" value="Save" class="btn_crud" />
+                    </div>
+                    <div class="form-group form-container">
+                        <a asp-action="Index" class="btn_crud" asp-route-id="@Model?.UPC_ID">Back To List</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+        @section Scripts {
+            @{
+                await Html.RenderPartialAsync("_ValidationScriptsPartial");
+            }
+        }
+    </main>
+</body>
+

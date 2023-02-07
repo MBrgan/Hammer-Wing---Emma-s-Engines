@@ -1,0 +1,22 @@
+﻿<!-- Modal-->
+<div class="modal fade" id="pageSizeModal" tabindex="-1" aria-labelledby="pageSizeModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Page Size: </span>
+                            </div>
+                            @Html.DropDownList("pageSizeID", null, htmlAttributes: new { @class = "form-container" })
+                            <div class="input-group-append">
+                                <input type="submit"  class="btn_crud" value="Set Page Size" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

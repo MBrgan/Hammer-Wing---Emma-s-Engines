@@ -8,11 +8,30 @@
     <main>
         <form asp-action="index" method="get">
             <h1>CUSTOMERS</h1>
-            <input type="hidden" name="sortDirection" value="@ViewData["sortDirection"]" />
-            <input type="hidden" name="sortField" value="@ViewData["sortField"]" />
             <p>
                 <a asp-action="Create" class="btn_crud">Create</a>
             </p>
+            <input type="hidden" name="sortDirection" value="@ViewData["sortDirection"]" />
+            <input type="hidden" name="sortField" value="@ViewData["sortField"]" />
+
+            <div>
+                <div class="row" style="width : 50%;">
+                    <div class="form-group form-container">
+                        <label class="control-label">Filter by First Name</label>
+                        @Html.TextBox("FirstSearch", null, new {@class = "form-control"})
+                    </div>
+                    <div class="form-group form-container">
+                        <label class="control-label">Filter by Last Name</label>
+                        @Html.TextBox("LastSearch", null, new {@class = "form-control"})
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group form-container">
+                        <input type="submit" class="btn_crud" name="actionButton" value="Filter" style="padding:12px;"/>
+                        <a asp-action="Index" class="btn_crud">Clear</a>
+                    </div>
+                </div>
+            </div>
             <div class=" divider2_desc_btn">
                 <table class="table table-striped">
                     <thead>
@@ -74,6 +93,7 @@
                     </tbody>
                 </table>
             </div>
+            <partial name="_PagingNavBar" />
         </form>
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>

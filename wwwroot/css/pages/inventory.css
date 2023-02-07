@@ -689,6 +689,15 @@ main {
     font-size: var(--font-regular);
     color: var(--color-white);
 }
+.btn_filter {
+    display: inline-block;
+    padding: 10px;
+    border: 1px solid var(--color-grey);
+    background-color: #3d4856;
+    border-radius: var(--size--border--radius);
+    font-size: var(--font-regular);
+    color: var(--color-white);
+}
 
 .btn_request {
     width: 100%;
